@@ -1,4 +1,4 @@
-;; url: 
+;; url: https://git.io/JfuIH
 
 (use-modules (gnu)
 	     (gnu packages))
