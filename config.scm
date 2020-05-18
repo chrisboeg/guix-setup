@@ -2,6 +2,8 @@
 
 (use-modules (gnu)
 	     (gnu packages))
+(use-modules (ice-9 popen)
+             (ice-9 rdelim))
 (use-modules (nongnu packages linux)
              (nongnu system linux-initrd))
 (use-service-modules desktop networking ssh xorg)
@@ -43,13 +45,20 @@
   (file-systems
     (cons* (file-system
              (mount-point "/boot/efi")
-             (device (uuid (system "blkid -s UUID -o value /dev/sda1") ;46A7-ECCA"
-			   'fat32))
+	     (device (uuid 
+	               (let* ((port (open-input-pipe "blkid -s UUID -o value /dev/sda1"))
+	                      (str (read-line port)))
+	                 (close-pipe port)
+	                 str)
+		       'fat32))
              (type "vfat"))
            (file-system
              (mount-point "/")
-             (device
-               (uuid (system "blkid -s UUID -o value /dev/sda3") ;17cac86f-e36c-4757-a21b-44ec5c12a2fd
-                     'ext4))
+             (device (uuid
+	      	       (let* ((port (open-input-pipe "blkid -s UUID -o value /dev/sda3"))
+	      		      (str (read-line port)))
+	      	         (close-pipe port)
+	      	         str)
+                       'ext4))
              (type "ext4"))
            %base-file-systems)))
