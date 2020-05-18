@@ -43,12 +43,13 @@
   (file-systems
     (cons* (file-system
              (mount-point "/boot/efi")
-             (device (uuid "46A7-ECCA" 'fat32))
+             (device (uuid (system "blkid -s UUID -o value /dev/sda1") ;46A7-ECCA"
+			   'fat32))
              (type "vfat"))
            (file-system
              (mount-point "/")
              (device
-               (uuid "17cac86f-e36c-4757-a21b-44ec5c12a2fd"
+               (uuid (system "blkid -s UUID -o value /dev/sda3") ;17cac86f-e36c-4757-a21b-44ec5c12a2fd
                      'ext4))
              (type "ext4"))
            %base-file-systems)))
