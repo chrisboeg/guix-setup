@@ -67,4 +67,4 @@
 	     (device "/dev/mapper/cryptroot")
              (type "ext4")
 	     (dependencies mapped-devices))
-           %base-file-systems))))
+           %base-file-systems)))
