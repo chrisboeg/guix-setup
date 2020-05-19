@@ -1,4 +1,4 @@
-#!/run/current-system/profile/bin/bash
+#!/bin/sh
 #
 # WARNING: this script will destroy data on the selected disk.
 #
@@ -53,8 +53,8 @@ curl -sL https://git.io/JfuIH?$(date +%s) -o config.scm
 curl -sL https://git.io/JfuIS?$(date +%s) -o channels.scm
 
 ### Set up logging ###
-exec 1> >(tee "stdout.log")
-exec 2> >(tee "stderr.log")
+#exec 1> >(tee "stdout.log")
+#exec 2> >(tee "stderr.log")
 
 ### Setup the disk and partitions ###
 boot_size=538
