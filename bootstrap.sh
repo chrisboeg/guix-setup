@@ -31,6 +31,15 @@
 #   $ curl -sL https://git.io/Jfu61 -o bootstrap.sh
 #   $ chmod +x boostrap.sh
 #   $ ./boostrap.sh <password> <password>
+#
+# @@@@@@@ WHEN DONE:
+#
+# Log in as root (switch to another tty), use passwd to set
+# password for user account, and lock root account with:
+#
+#   $ sudo passwd -l root
+#
+# and then reboot
 
 if [ -z "$1" ] || [ -z "$2" ];
 then
