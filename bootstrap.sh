@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # WARNING: this script will destroy data on the selected disk.
 #
@@ -28,7 +28,9 @@
 # Execute this script:
 #
 #   $ guix install curl
-#   $ curl -sL "https://git.io/Jfu61?$(date +%s)" | bash
+#   $ curl -sL "https://git.io/Jfu61?$(date +%s)" -o bootstrap.sh
+#   $ chmod +x boostrap.sh
+#   $ ./boostrap.sh <password> <password>
 
 if [ -z "$1" ] || [ -z "$2" ];
 then
