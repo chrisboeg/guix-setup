@@ -34,12 +34,10 @@
 #
 # @@@@@@@ WHEN DONE:
 #
-# Log in as root (switch to another tty), use passwd to set
-# password for user account, and lock root account with:
+# Log in as passwordless root, then use `passwd` to set a 
+# password for the root account and the user account.
 #
-#   $ sudo passwd -l root
-#
-# and then reboot
+# When done, reboot
 
 if [ -z "$1" ] || [ -z "$2" ];
 then
