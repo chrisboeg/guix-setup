@@ -104,4 +104,4 @@ hash -r
 
 guix system init /mnt/etc/config.scm /mnt
 
-reboot -f
+reboot
