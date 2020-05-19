@@ -61,7 +61,7 @@ device="/dev/sda"
 boot_size=538
 swap_multiplier=2
 mem_size=$(free --mebi | awk '/Mem:/ {print $2}')
-swap_size=$(($mem_size * $swap_multiplier))MiB
+swap_size=$(($mem_size * $swap_multiplier))
 boot_end=$(( $boot_size + 1 ))MiB
 
 parted --script "${device}" -- mklabel gpt \
