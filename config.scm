@@ -39,7 +39,9 @@
 		"restic"
 		"fuse"
 		"alacritty"
-		
+		"gnupg"
+		"openssh"
+		"wireguard-tools"
 		))
 	    %base-packages))
   (services
