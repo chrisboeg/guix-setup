@@ -42,6 +42,10 @@
 		"gnupg"
 		"openssh"
 		"wireguard-tools"
+		"pulseaudio"
+		"pavucontrol"
+		"sbcl"
+		"xclip"
 		))
 	    %base-packages))
   (services
