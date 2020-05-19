@@ -41,7 +41,16 @@
       (bootloader grub-efi-bootloader)
       (target "/boot/efi")
       (keyboard-layout keyboard-layout)))
-  (swap-devices (list "/dev/sda2"))
+  (swap-devices '("/swapfile"))
+  (mapped-devices
+    (list (mapped-device
+            (source
+              (uuid (let* ((port (open-input-pipe "blkid -s UUID -o value /dev/sda2"))
+	      		   (str (read-line port)))
+	      	      (close-pipe port)
+	      	      str))
+            (target "cryptroot")
+            (type luks-device-mapping))))
   (file-systems
     (cons* (file-system
              (mount-point "/boot/efi")
@@ -54,11 +63,7 @@
              (type "vfat"))
            (file-system
              (mount-point "/")
-             (device (uuid
-	      	       (let* ((port (open-input-pipe "blkid -s UUID -o value /dev/sda3"))
-	      		      (str (read-line port)))
-	      	         (close-pipe port)
-	      	         str)
-                       'ext4))
-             (type "ext4"))
+	     (device "/dev/mapper/cryptroot")
+             (type "ext4")
+	     (dependencies mapped-devices))
            %base-file-systems)))
