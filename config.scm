@@ -46,6 +46,22 @@
 		"pavucontrol"
 		"sbcl"
 		"xclip"
+		"slock"
+		"wget"
+		"unzip"
+		"zip"
+		"acpi"
+		"cryptsetup"
+		"libreoffice"
+		"inkscape"
+		"gimp"
+		"xmodmap"
+		"xinit"
+		"xset"
+		"xsetroot"
+		"xev"
+		"curl"
+		"zathura-pdf-mupdf"
 		))
 	    %base-packages))
   (services
