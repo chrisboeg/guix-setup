@@ -15,12 +15,12 @@
 #   $ rfkill unblock wlan
 #   $ ip address # note wifi interface, e.g. wlp3s0
 #   $ cat <<EOF > wpa_supplicant.conf
-      network={
-        ssid="<My-SSID>"
-        key_mgmt=WPA-PSK
-        psk="<SSID-pass>"
-      }
-      EOF	
+#     network={
+#       ssid="<My-SSID>"
+#       key_mgmt=WPA-PSK
+#       psk="<SSID-pass>"
+#     }
+#     EOF	
 #   $ wpa_supplicant -c wpa_supplicant.conf -i <interface> -B
 #   $ dhclient -v <interface>
 #   $ ping -c 3 gnu.org # test connection
