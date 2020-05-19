@@ -36,7 +36,8 @@
             (set-xorg-configuration
               (xorg-configuration
                 (keyboard-layout keyboard-layout))))
-      %desktop-services)) (bootloader
+      %desktop-services))
+  (bootloader
     (bootloader-configuration
       (bootloader grub-efi-bootloader)
       (target "/boot/efi")
@@ -48,7 +49,7 @@
               (uuid (let* ((port (open-input-pipe "blkid -s UUID -o value /dev/sda2"))
 	      		   (str (read-line port)))
 	      	      (close-pipe port)
-	      	      str))
+	      	      str)))
             (target "cryptroot")
             (type luks-device-mapping))))
   (file-systems
