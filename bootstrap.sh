@@ -14,7 +14,13 @@
 #
 #   $ rfkill unblock wlan
 #   $ ip address # note wifi interface, e.g. wlp3s0
-#   $ echo "network={ssid="<My-SSID>" key_mgmt=WPA-PSK psk="<SSID-pass>"} > wpa_supplicant.conf
+#   $ cat <<EOF > wpa_supplicant.conf
+      network={
+        ssid="<My-SSID>"
+        key_mgmt=WPA-PSK
+        psk="<SSID-pass>"
+      }
+      EOF	
 #   $ wpa_supplicant -c wpa_supplicant.conf -i <interface> -B
 #   $ dhclient -v <interface>
 #   $ ping -c 3 gnu.org # test connection
@@ -22,7 +28,7 @@
 # Execute this script:
 #
 #   $ guix install curl
-#   $ curl -sL https://git.io/Jfu61?$(date +%s) | bash
+#   $ curl -sL "https://git.io/Jfu61?$(date +%s)" | bash
 
 if [ -z "$1" ] || [ -z "$2" ];
 then
