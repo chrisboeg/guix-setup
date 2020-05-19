@@ -81,7 +81,7 @@ mkfs.ext4 -L cryptroot /dev/mapper/cryptroot
 
 mount LABEL=cryptroot /mnt
 
-dd if=/dev/zero of=/mnt/swapfile bs=1MiB count=$swap_size
+dd if=/dev/zero of=/mnt/swapfile bs=1MiB count=$swap_size status=progress
 chmod 600 /mnt/swapfile
 mkswap /mnt/swapfile
 swapon /mnt/swapfile
