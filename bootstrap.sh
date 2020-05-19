@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/run/current-system/profile/bin/bash
 #
 # WARNING: this script will destroy data on the selected disk.
 #
