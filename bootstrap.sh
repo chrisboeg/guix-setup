@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # WARNING: this script will destroy data on the selected disk.
 #
@@ -24,21 +24,25 @@
 #   $ guix install curl
 #   $ curl -sL https://git.io/Jfu61 | bash
 
-set -uo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+if [ -z "$1" ] || [ -z "$2" ];
+then
+	echo "Must provide password arguments, exiting."
+	exit 1
+fi
 
-[[ -n "$1" ] &&  [[ -n "$2" ]] || ( echo "Must provide password arguments, exiting."; exit 1; )
-
-[[ "$1" == "$2" ]] || ( echo "Passwords did not match, exiting."; exit 1; )
+if [ "$1" != "$2" ];
+then
+	echo "Passwords did not match, exiting."
+	exit 1
+fi
 
 password="$1"
 
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
 curl -sL https://git.io/JfuIH -o config.scm
 curl -sL https://git.io/JfuIS -o channels.scm
-
-echo "password: $password"
-
-exit 0
 
 ### Set up logging ###
 exec 1> >(tee "stdout.log")
