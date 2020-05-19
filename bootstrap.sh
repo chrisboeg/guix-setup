@@ -79,7 +79,7 @@ echo -n "$password" | cryptsetup luksFormat $part_root -
 echo -n "$password" | cryptsetup open --type luks $part_root cryptroot -
 mkfs.ext4 -L cryptroot /dev/mapper/cryptroot
 
-mount LABLE=cryptroot /mnt
+mount LABEL=cryptroot /mnt
 
 dd if=/dev/zero of=/mnt/swapfile bs=1MiB count=$swap_size
 chmod 600 /mnt/swapfile
