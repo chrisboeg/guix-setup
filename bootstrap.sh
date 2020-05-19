@@ -13,7 +13,7 @@
 # Connect to wifi:
 #
 #   $ rfkill unblock wlan
-#   $ ip address # note wired interface, e.g. wlp3s0
+#   $ ip address # note wifi interface, e.g. wlp3s0
 #   $ echo "network={ssid="<My-SSID>" key_mgmt=WPA-PSK psk="<SSID-pass>"} > wpa_supplicant.conf
 #   $ wpa_supplicant -c wpa_supplicant.conf -i <interface> -B
 #   $ dhclient -v <interface>
@@ -35,6 +35,10 @@ password="$1"
 
 curl -sL https://git.io/JfuIH -o config.scm
 curl -sL https://git.io/JfuIS -o channels.scm
+
+echo "password: $password"
+
+exit 0
 
 ### Set up logging ###
 exec 1> >(tee "stdout.log")
