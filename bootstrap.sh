@@ -92,6 +92,7 @@ mount $part_boot /mnt/boot
 
 herd start cow-store /mnt
 
+mkdir -p /mnt/etc/guix
 cp config.scm /mnt/etc/config.scm
 cp channels.scm /mnt/etc/guix/channels.scm
 
