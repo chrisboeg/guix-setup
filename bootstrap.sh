@@ -87,8 +87,8 @@ mkswap /mnt/swapfile
 swapon /mnt/swapfile
 
 mkfs.vfat -F32 $part_boot
-mkdir -p /mnt/boot
-mount $part_boot /mnt/boot
+mkdir -p /mnt/boot/efi
+mount $part_boot /mnt/boot/efi
 
 herd start cow-store /mnt
 
