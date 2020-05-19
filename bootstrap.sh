@@ -22,7 +22,7 @@
 # Execute this script:
 #
 #   $ guix install curl
-#   $ curl -sL https://git.io/Jfu61 | bash
+#   $ curl -sL https://git.io/Jfu61?$(date +%s) | bash
 
 if [ -z "$1" ] || [ -z "$2" ];
 then
@@ -41,8 +41,8 @@ password="$1"
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
-curl -sL https://git.io/JfuIH -o config.scm
-curl -sL https://git.io/JfuIS -o channels.scm
+curl -sL https://git.io/JfuIH?$(date +%s) -o config.scm
+curl -sL https://git.io/JfuIS?$(date +%s) -o channels.scm
 
 ### Set up logging ###
 exec 1> >(tee "stdout.log")
