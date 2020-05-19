@@ -27,7 +27,20 @@
                 %base-user-accounts))
   (packages
     (append (map specification->package
-	      '("nss-certs" "vim" "git" "icecat" "wget"))
+	      '(
+		"nss-certs"
+		"vim"
+		"git"
+		"icecat"
+		"wget"
+		"udevil"
+		"emacs"
+		"tlp"
+		"restic"
+		"fuse"
+		"alacritty"
+		
+		))
 	    %base-packages))
   (services
     (append
