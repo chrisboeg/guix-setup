@@ -22,7 +22,7 @@
 # Execute this script:
 #
 #   $ guix install curl
-#   $ curl -sL  | bash
+#   $ curl -sL https://git.io/Jfu61 | bash
 
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
