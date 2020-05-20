@@ -1,7 +1,8 @@
 ;; url: https://git.io/JfuIH
 
 (use-modules (gnu)
-	     (gnu packages))
+	     (gnu packages)
+	     (gnu services pm))
 (use-modules (ice-9 popen)
              (ice-9 rdelim))
 (use-modules (nongnu packages linux)
@@ -66,8 +67,12 @@
 	    %base-packages))
   (services
     (append
-      (list (service gnome-desktop-service-type)
-            (service openssh-service-type)
+      (list (service openssh-service-type)
+	    (screen-locker-service slock "slock")
+	    (service tlp-service-type
+                    (tlp-configuration
+                     (cpu-boost-on-ac? #t)))
+	    (service thermald-service-type)
             (set-xorg-configuration
               (xorg-configuration
                 (keyboard-layout keyboard-layout))))
